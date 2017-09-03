@@ -7,7 +7,7 @@ const search = require('./components/search');
 const like = require('./components/like');
 
 puppeteer.launch({
-    headless: process.env.APP_HEADLESS
+    headless: (process.env.APP_HEADLESS === "true")
 }).then(async browser => {
     global.config = JSON.parse(await fs.readFile(process.env.APP_CONFIG_FILE, 'utf-8'));
     await fs.remove("./node_modules/puppeteer/.dev_profile1");
